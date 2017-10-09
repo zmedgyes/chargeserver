@@ -1,0 +1,16 @@
+{
+  "name": "chargeserver",
+  "version": "0.0.0",
+  "description": "chargeserver",
+  "main": "server.js",
+  "author": {
+    "name": "Zsolt"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "mongoose": "^4.12.1",
+    "request": "^2.83.0"
+  }
+}
