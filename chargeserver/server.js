@@ -86,8 +86,7 @@ app.post('/reservation/delete', bodyParser.json(), function (req, res) {
         res.end()
     })
 })
-
-
-
-
+app.use('/', function (req, res) {
+    res.end('server live')
+})
 app.listen(3000);
