@@ -89,4 +89,6 @@ app.post('/reservation/delete', bodyParser.json(), function (req, res) {
 app.use('/', function (req, res) {
     res.end('server live')
 })
-app.listen(3000);
+var port = 3000
+app.listen(port);
+console.log('server listeningon port '+port)
