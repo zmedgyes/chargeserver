@@ -8,8 +8,8 @@ mongoose.connect('mongodb://localhost/ecarcharger', { useMongoClient: true });
 var reservationSchema = new mongoose.Schema({
     chargerId: String,
     userId: String,
-    from: Integer,
-    to:Integer
+    from: Number,
+    to:Number
 });
 var reservationModel = mongoose.model('Reservation', reservationSchema)
 app.use('/openchargemap', function (req, res) {
