@@ -8,8 +8,8 @@ mongoose.connect('mongodb://localhost/ecarcharger', { useMongoClient: true });
 var reservationSchema = new mongoose.Schema({
     chargerId: String,
     userId: String,
-    from: Date,
-    to:Date
+    from: Integer,
+    to:Integer
 });
 var reservationModel = mongoose.model('Reservation', reservationSchema)
 app.use('/openchargemap', function (req, res) {
@@ -20,6 +20,7 @@ app.use('/openchargemap', function (req, res) {
         method: 'GET'
     }
     request(options, (err, response, body) => {
+        res.setHeader('Content-Type', 'application/json')
         res.send(body);
     })
 
@@ -28,10 +29,11 @@ app.post('/reservation/get', bodyParser.json(), function (req, res) {
     reservationModel.find(req.body, (err, data) => {
         res.setHeader('Content-Type', 'application/json')
         if (err) {
-            res.write(JSON.stringify({ success: true, data: data }))
+            res.write(JSON.stringify({ success: false, error: err }))
+            
         }
         else {
-            res.write(JSON.stringify({ success: false, error: err }))
+            res.write(JSON.stringify({ success: true, data: data }))
         }
         res.end()
     })
@@ -44,10 +46,11 @@ app.post('/reservation/add', bodyParser.json(), function (req, res) {
     reservation.save((err) => {
         res.setHeader('Content-Type', 'application/json')
         if (err) {
-            res.write(JSON.stringify({ success: true, data: [reservation] }))
+            res.write(JSON.stringify({ success: false, error: err }))
+          
         }
         else {
-            res.write(JSON.stringify({ success: false, error: err }))
+            res.write(JSON.stringify({ success: true, data: [reservation] }))
         }
         res.end()
     })
@@ -64,10 +67,10 @@ app.post('/reservation/update', bodyParser.json(), function (req, res) {
         (err, data) => {
             res.setHeader('Content-Type', 'application/json')
             if (err) {
-                res.write(JSON.stringify({ success: true, data: data }))
+                res.write(JSON.stringify({ success: false, error: err }))
             }
             else {
-                res.write(JSON.stringify({ success: false, error: err }))
+                res.write(JSON.stringify({ success: true, data: data })) 
             }
             res.end()
         }
@@ -78,10 +81,10 @@ app.post('/reservation/delete', bodyParser.json(), function (req, res) {
     reservationModel.deleteMany(req.body, (err) => {
         res.setHeader('Content-Type', 'application/json')
         if (err) {
-            res.write(JSON.stringify({ success: true, data: [] }))
+            res.write(JSON.stringify({ success: false, error: err }))
         }
         else {
-            res.write(JSON.stringify({ success: false, error: err }))
+            res.write(JSON.stringify({ success: true, data: [] }))
         }
         res.end()
     })
