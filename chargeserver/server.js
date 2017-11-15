@@ -392,7 +392,7 @@ var bfs = (params, callback) => {
 var dijkstra = (points, start, end, limit) => {
     start.dist = 0;
     var activepoints = [start]
-    while (!activepoints.includes(end)) {
+    while (activepoints.indexOf(end) == -1) {
         var tmp = []
         for (var i in activepoints) {
             for (var j in points) {
