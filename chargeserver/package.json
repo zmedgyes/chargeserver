@@ -7,10 +7,12 @@
     "name": "Zsolt"
   },
   "dependencies": {
+    "@google/maps": "^0.4.5",
     "async": "^2.5.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.1",
     "mongoose": "^4.12.1",
+    "node-geo-distance": "^1.2.0",
     "request": "^2.83.0"
   }
 }
