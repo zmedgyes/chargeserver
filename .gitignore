@@ -48,3 +48,9 @@ Temporary Items
 
 chargeserver/node_modules/*
 chargeserver/typings/*
+chargeserver/values.txt
+chargeserver/keys.txt
+chargeserver/buffer/hu_old.json
+.vs/chargeserver/v15/.suo
+.vs/chargeserver/v15/.suo
+chargeserver/chargeserver.njsproj
