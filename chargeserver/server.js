@@ -47,7 +47,7 @@ app.use('/openchargemap', function (req, res) {
 });
 
 app.get('/stations', function (req, res) {
-    if (req.query.latitude && req.query.longitude && distance) {
+    if (req.query.latitude && req.query.longitude && req.query.distance) {
         routing.getPointsInDistance(
             bufferedPoints,
             { latitude: parseFloat(req.query.latitude), longitude: parseFloat(req.query.longitude) },
