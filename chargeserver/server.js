@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var app = express();
 var fs = require('fs');
 var routing = require('./routing.js')
+const camelcaseKeys = require('camelcase-keys');
 
 var googleAPIKey = "AIzaSyBOdIvZrtOfFZeAGq2RTegybEaFEeUcltI";
 var googleServerAPIKey = "AIzaSyDhY7IqIIk6jdj1wtKT-PyNIZRrsC6lM30";
@@ -171,7 +172,7 @@ app.post('/maps/route', bodyParser.json(), (req, res) => {
             callOptions,
             (err, result) => {
                 res.setHeader('Content-Type', 'application/json')
-                res.send(result.json);
+                res.send(camelcaseKeys(result.json, { deep: true }));
             }
         )
     })
